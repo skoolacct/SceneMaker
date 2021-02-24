@@ -19,6 +19,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+
+import javax.swing.*;
+import java.awt.*;
 import java.util.Random;
 
 
@@ -271,43 +274,65 @@ public class SceneMaker extends Application
 
     ////////////////////////////////////////////////////////////////
 
-    public Label title = new Label("Gamemode");
-    public ImageView picture = new ImageView("dorime_pic.jpg");
+    public JLabel title = new JLabel("Gamemode");
+    //public ImageView picture = new ImageView("dorime_pic.jpg");
 
     public Scene makeScene3()
     {
         int minWidth = 400;
         int minHeight = 400;
 
-        Button buttonOne = new Button("Person 1");
-        Button buttonTwo = new Button("Person 2");
-        Button buttonThree = new Button("Person 3");
-        Button buttonFour = new Button("Person 4");
+        JButton buttonOne = new JButton("Person 1");
+        JButton buttonTwo = new JButton("Person 2");
+        JButton buttonThree = new JButton("Person 3");
+        JButton buttonFour = new JButton("Person 4");
 
-        // Create a new grid pane
-        GridPane pane = new GridPane();
-        pane.setPadding(new Insets(10, 10, 10, 10));
-        pane.setMinSize(minWidth, minHeight);
-        pane.setVgap(10);
-        pane.setHgap(10);
+        // Create a new pane
 
+        JPanel pane = new JPanel(new GridBagLayout());
+        // GridBagLayout pane = new GridBagLayout();
+        GridBagConstraints a = new GridBagConstraints();
+
+        a.fill = GridBagConstraints.HORIZONTAL;
+
+        /*
         //setting the fit height and width of the image view
         picture.setFitHeight(250);
         picture.setFitWidth(250);
 
-        title.setTextAlignment(TextAlignment.CENTER);
-
         //Setting the preserve ratio of the image view
         picture.setPreserveRatio(true);
 
-        // add things to screen
-        pane.add(title, 0, 0, 3, 1);
-        pane.add(picture, 0, 1);
+         */
 
-        pane.add(buttonOne, 1, 1);
-        pane.add(buttonTwo, 1, 2);
-        pane.add(buttonThree, 1, 3);
-        pane.add(buttonFour, 1, 4);
+        // add things to screen
+        a.gridx = 0;
+        a.gridy = 0;
+        a.gridwidth = 2;
+        a.gridheight = 3;
+
+        pane.add(title, a);
+
+        a.gridx = 0;
+        a.gridy = 1;
+
+        pane.add(buttonOne, a);
+
+        a.gridx = 1;
+        a.gridy = 1;
+
+        pane.add(buttonTwo, a);
+
+        a.gridx = 2;
+        a.gridy = 1;
+
+        pane.add(buttonThree, a);
+
+        a.gridx = 3;
+        a.gridy = 1;
+        pane.add(buttonFour, a);
+
+        //pane.add(picture, 0, 1);
 
 
         Scene scene = new Scene(pane, 400,400);
