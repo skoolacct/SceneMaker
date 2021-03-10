@@ -1,13 +1,3 @@
-/**
- *
- * @author Brian Arnold
- * @version Dec 2020
- * @assign.ment Software Engineering
- * @descrip.tion This class implements a 2D-array of Strings,
- * from which a list of Candidate objects will be built.
- *
- */
-
 public class CanNames
 {
     /*
